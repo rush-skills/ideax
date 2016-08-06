@@ -117,6 +117,8 @@ public class HomeActivity extends AppCompatActivity {
             action.setDisplayShowTitleEnabled(false); //hide the title
 
             edtSeach = (EditText)action.getCustomView().findViewById(R.id.edtSearch); //the text editor
+            edtSeach.setHint("Search Your Query");
+            edtSeach.setHintTextColor(Color.WHITE);
 
             //this is a listener to do a search when the user clicks on search button
             edtSeach.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -145,7 +147,7 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
     private void doSearch() {
-//
+      Toast.makeText(this,"Query Searched",Toast.LENGTH_SHORT).show();
     }
 
 

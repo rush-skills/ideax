@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class CustomAdapter extends ArrayAdapter<String> {
 
@@ -28,9 +27,12 @@ public class CustomAdapter extends ArrayAdapter<String> {
             ,"Two top federal agencies, NASA and the Veterans Affairs (VA) Department, have appointed new chief information security officers (CISO). Less than two months after the last head of information security, Brian Burns, left the VA for another job in the public sector, the agency named Roopangi Kadakia as the next CISO. Previously, Kadakia served as web services executive in NASA’s Office of the CIO.",
             "Like most established companies, we have for many years focused on the core tenets of reliability, predictability, interoperability, security, and cost containment in delivering on our IT mission – “doing IT right”. In recent years we have also faced demands from the market and from customers for greater speed and agility, adding to the challenge of doing things right – “doing IT fast.” When I became CIO earlier this year, it was clear that we could not continue to operate IT in a traditional manner and remain competitive.",
             "We have been hearing predictions for decades of a takeover of the world by artificial intelligence. In 1957, Herbert A. Simon predicted that within 10 years a digital computer would be the world’s chess champion.  That didn’t happen until 1996.  And despite Marvin Minsky’s 1970 prediction that “in from three to eight years we will have a machine with the general intelligence of an average human being,” we still consider that a feat of science fiction."};
+    private String[] headings;
+
     CustomAdapter(Context context,String[] Head)
     {
         super(context,R.layout.custom_list,Head);
+        headings=Head;
         this.context = context;
     }
 
@@ -61,7 +63,16 @@ public class CustomAdapter extends ArrayAdapter<String> {
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,String.valueOf(position),Toast.LENGTH_LONG).show();
+
+
+                        Intent i = new Intent(context,IdeaDetailActivity.class);
+
+                        i.putExtra("ImageResource",ImageResources[position]);
+                        i.putExtra("heading",headings[position]);
+                        i.putExtra("description",Description[position]);
+                        context.startActivity(i);
+
+
             }
         });
 
