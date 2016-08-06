@@ -62,9 +62,13 @@ public class IdeaDetailActivity extends AppCompatActivity {
         li = (ListView) findViewById(R.id.list_comments);
 
         values = new ArrayList<String>(); //Creating a new ArrayList
-        values.add("Miley Cyrus");
-        values.add("Selena Gomez");
-        values.add("Jonas Brothers");
+        values.add("Pretty Nice Idea\n\n\t\t\t\tBy Jelena Foxn\n");
+        values.add("Amazing!!!\n" +
+                "\n" +
+                "\t\t\t\tBy Alicia Cyrus\n");
+        values.add("See you there......\n" +
+                "\n" +
+                "\t\t\t\tBy Nick Lovato\n");
 
         // Define a new Adapter
         // First parameter - Context
@@ -73,7 +77,7 @@ public class IdeaDetailActivity extends AppCompatActivity {
         // Forth - the Array of data
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+                android.R.layout.two_line_list_item, android.R.id.text1, values);
 
 
         Bundle bn = getIntent().getExtras();
@@ -93,8 +97,6 @@ public class IdeaDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 t1.speak(description_bn, TextToSpeech.QUEUE_FLUSH, null);
             }
         });
@@ -147,6 +149,10 @@ public class IdeaDetailActivity extends AppCompatActivity {
         AlertDialog b = dialogBuilder.create();
 
         b.show();
+
+    }
+
+    public void Interested(View view) {
 
     }
 }
