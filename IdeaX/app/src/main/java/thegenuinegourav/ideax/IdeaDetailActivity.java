@@ -1,13 +1,21 @@
 package thegenuinegourav.ideax;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class IdeaDetailActivity extends AppCompatActivity {
 
@@ -17,6 +25,9 @@ public class IdeaDetailActivity extends AppCompatActivity {
     String description_bn;
     ImageView imageResources;
     Integer Imageres;
+    ImageButton CommentButton;
+
+    ListView li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +37,35 @@ public class IdeaDetailActivity extends AppCompatActivity {
         heading = (TextView)findViewById(R.id.heading);
         description = (TextView)findViewById(R.id.description);
         imageResources = (ImageView) findViewById(R.id.idea_image);
+        CommentButton = (ImageButton) findViewById(R.id.comment_button);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        // Get ListView object from xml
+        li = (ListView) findViewById(R.id.list_comments);
+
+        // Defined Array values to show in ListView
+        String[] values = new String[] { "Android List View",
+                "Adapter implementation",
+                "Simple List View In Android",
+                "Create List View Android",
+                "Android Example",
+                "List View Source Code",
+                "List View Array Adapter",
+                "Android Example List View"
+        };
+
+        // Define a new Adapter
+        // First parameter - Context
+        // Second parameter - Layout for the row
+        // Third parameter - ID of the TextView to which the data is written
+        // Forth - the Array of data
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+
+
 
         Bundle bn = getIntent().getExtras();
         if(bn != null){
@@ -50,6 +88,39 @@ public class IdeaDetailActivity extends AppCompatActivity {
             }
         });
 
+
+        li.setAdapter(adapter);
+
+        CommentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showChangeLangDialog();
+            }
+        });
+    }
+
+    public void showChangeLangDialog() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.comment_dialog_box, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
+
+        dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //do something with edt.getText().toString();
+                Toast.makeText(getApplicationContext(),"comment added successfully!",Toast.LENGTH_SHORT).show();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //pass
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+
+        b.show();
 
 
     }
