@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -21,6 +22,10 @@ public class HomeActivity extends AppCompatActivity {
     private boolean isSearchOpened = false;
     private EditText edtSeach;
 
+    private ListView listView;
+    private String[] HeadingNames={"Dog1","Dog2","Dog3","Dog4","Dog5"};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,9 @@ public class HomeActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(mToolbar);
+
+        listView = (ListView)findViewById(R.id.list);
+        listView.setAdapter(new CustomAdapter(this,HeadingNames));
 
     }
     @Override
