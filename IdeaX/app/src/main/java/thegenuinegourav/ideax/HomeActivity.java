@@ -14,9 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,7 +29,8 @@ public class HomeActivity extends AppCompatActivity {
     private FloatingActionButton fab;
 
     private ListView listView;
-    private String[] HeadingNames={"Dog1","Dog2","Dog3","Dog4","Dog5"};
+    private String[] HeadingNames={"Do you have the right type of Information Technology?","Why Should a Senior Executive Start Using Snapchat?",
+            "New Appointments and Career Moves, July 2016","How to Become Agile – Without Making a Mess?","The Amazing Artificial Intelligence is Coming!"};
 
 
     @Override
@@ -51,6 +54,14 @@ public class HomeActivity extends AppCompatActivity {
 
         listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(new CustomAdapter(this,HeadingNames));
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String n = String.valueOf(parent.getItemAtPosition(position)); //returns an item of selected position and then converting it to a String
+                Toast.makeText(HomeActivity.this, "You have selected " + n, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
     @Override
