@@ -23,18 +23,14 @@ import java.util.Locale;
 public class IdeaDetailActivity extends AppCompatActivity {
 
 
+    private ArrayList<String> values;
     TextView heading,description;
     String heading_bn;
     String description_bn;
     ImageView imageResources;
     Integer Imageres;
-    ImageButton new_comment;
-    ListView comments_list;
-    private ArrayList<String> comments;
-    private ArrayAdapter adapter;
     TextToSpeech t1;
     ImageButton CommentButton;
-
     ListView li;
 
 
@@ -63,16 +59,10 @@ public class IdeaDetailActivity extends AppCompatActivity {
         // Get ListView object from xml
         li = (ListView) findViewById(R.id.list_comments);
 
-        // Defined Array values to show in ListView
-        String[] values = new String[] { "Android List View",
-                "Adapter implementation",
-                "Simple List View In Android",
-                "Create List View Android",
-                "Android Example",
-                "List View Source Code",
-                "List View Array Adapter",
-                "Android Example List View"
-        };
+        values = new ArrayList<String>(); //Creating a new ArrayList
+        values.add("Miley Cyrus");
+        values.add("Selena Gomez");
+        values.add("Jonas Brothers");
 
         // Define a new Adapter
         // First parameter - Context
@@ -95,7 +85,7 @@ public class IdeaDetailActivity extends AppCompatActivity {
             imageResources.setImageResource(Imageres);
 
         }
-        
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +127,12 @@ public class IdeaDetailActivity extends AppCompatActivity {
         dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //do something with edt.getText().toString();
-                Toast.makeText(getApplicationContext(),"comment added successfully!",Toast.LENGTH_SHORT).show();
+                if(edt.getText().toString().length()!=0)
+                {
+                    values.add(edt.getText().toString());
+                    Toast.makeText(getApplicationContext(),"comment added successfully!",Toast.LENGTH_SHORT).show();
+                }
+                else Toast.makeText(getApplicationContext(),"Write Comment!!",Toast.LENGTH_SHORT).show();
             }
         });
         dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
