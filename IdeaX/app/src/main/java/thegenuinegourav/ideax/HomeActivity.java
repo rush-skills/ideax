@@ -1,7 +1,9 @@
 package thegenuinegourav.ideax;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -21,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
+    private FloatingActionButton fab;
 
     private ListView listView;
     private String[] HeadingNames={"Dog1","Dog2","Dog3","Dog4","Dog5"};
@@ -33,6 +37,17 @@ public class HomeActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(mToolbar);
+        setTitle("IdeaX");
+        mToolbar.setTitleTextColor(Color.WHITE);
+        mToolbar.setSubtitleTextColor(Color.WHITE);
+       fab =(FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
 
         listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(new CustomAdapter(this,HeadingNames));
@@ -121,5 +136,9 @@ public class HomeActivity extends AppCompatActivity {
     private void doSearch() {
 //
     }
+
+
+
+
 
 }
