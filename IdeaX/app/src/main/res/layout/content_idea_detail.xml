@@ -35,15 +35,6 @@
             android:text="Discussion"
             android:textSize="15sp"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Interested"
-            android:textColor="@android:color/white"
-            android:layout_margin="7dp"
-            android:onClick="Interested?"
-            android:background="@android:color/holo_green_dark"/>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
