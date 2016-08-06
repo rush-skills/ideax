@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Discussion added successfully!",Toast.LENGTH_SHORT).show();
             }
         });
-        dialogBuilder.setNegativeButton("Upload", new DialogInterface.OnClickListener() {
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //pass
             }

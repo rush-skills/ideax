@@ -27,8 +27,8 @@
             />
         <ImageButton
             android:id="@+id/text_to_speech"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginLeft="5dp"
             android:layout_gravity="right"
             android:layout_marginRight="10dp"

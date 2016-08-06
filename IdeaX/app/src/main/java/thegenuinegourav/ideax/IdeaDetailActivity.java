@@ -10,10 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ public class IdeaDetailActivity extends AppCompatActivity {
     ImageButton CommentButton;
     ListView li;
     ImageButton TexttoSpeech;
+    RelativeLayout calender;
 
 
     @Override
@@ -45,6 +48,7 @@ public class IdeaDetailActivity extends AppCompatActivity {
         imageResources = (ImageView) findViewById(R.id.idea_image);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        calender = (RelativeLayout)findViewById(R.id.calender);
         TexttoSpeech = (ImageButton) findViewById(R.id.text_to_speech);
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -106,7 +110,18 @@ public class IdeaDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               Toast.makeText(getApplicationContext(),"Meetup setup",Toast.LENGTH_SHORT).show();
+               if(calender.getVisibility()==View.GONE)
+               {
+                   calender.setVisibility(View.VISIBLE);
+                   ImageButton add = (ImageButton)calender.findViewById(R.id.calenderButton);
+                   add.setOnClickListener(new View.OnClickListener() {
+                       @Override
+                       public void onClick(View v) {
+                           Toast.makeText(getApplicationContext(),"Added to your Google Calender",Toast.LENGTH_SHORT).show();
+                       }
+                   });
+               }
+                else calender.setVisibility(View.GONE);
 
 
             }

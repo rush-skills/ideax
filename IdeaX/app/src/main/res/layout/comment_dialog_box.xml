@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Comment"
+        android:text="Write your Comment"
         android:textSize="15sp"
         android:layout_marginBottom="10dp"/>
 
