@@ -32,6 +32,7 @@ public class IdeaDetailActivity extends AppCompatActivity {
     TextToSpeech t1;
     ImageButton CommentButton;
     ListView li;
+    ImageButton TexttoSpeech;
 
 
     @Override
@@ -44,7 +45,7 @@ public class IdeaDetailActivity extends AppCompatActivity {
         imageResources = (ImageView) findViewById(R.id.idea_image);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        TexttoSpeech = (ImageButton) findViewById(R.id.text_to_speech);
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -53,6 +54,15 @@ public class IdeaDetailActivity extends AppCompatActivity {
                 }
             }
         });
+        TexttoSpeech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                t1.speak(description_bn, TextToSpeech.QUEUE_FLUSH, null);
+            }
+        });
+
+
         CommentButton = (ImageButton) findViewById(R.id.comment_button);
 
 
@@ -91,7 +101,7 @@ public class IdeaDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                t1.speak(description_bn, TextToSpeech.QUEUE_FLUSH, null);
+               Toast.makeText(IdeaDetailActivity.this,"Clicked",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -140,6 +150,7 @@ public class IdeaDetailActivity extends AppCompatActivity {
                 //pass
             }
         });
+
         AlertDialog b = dialogBuilder.create();
 
         b.show();
